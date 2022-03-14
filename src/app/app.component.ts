@@ -35,6 +35,11 @@ export class AppComponent implements OnInit {
       name: ['Sammy', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', [Validators.required, Validators.minLength(15)]],
+      address: this.fb.group({
+        city: [''],
+        street: [''],
+        pincode: [''],
+      }),
     });
   }
 
