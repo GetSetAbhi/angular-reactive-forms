@@ -1,38 +1,77 @@
-<h1>Animal Shelter Volunteer Form</h1>
-<form>
-  <h2>Personal Information</h2>
-	<label>
-    First Name:
-    <input type="text" placeholder="required">
-  </label>
-	<label>
-    Phone Number:
-    <input type="text" placeholder="required">
-  </label>
-  <label>Select Preferred Location:</label>
-  <select>
-    <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
-  </select>
-  <h2>Please select what animals you're comfortable working with, if any:</h2>
-  <div class="grouping">
-    <label>Dogs
-      <input type="checkbox">
-    </label>
-    <label>Cats
-      <input type="checkbox">
-    </label>
-    <label>Reptiles
-      <input type="checkbox">
-    </label>
-  </div>
-  <h2>Reference(s)</h2>
-  <div class="grouping">
+<h1>First Form</h1>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)">
+  <div>
     <label>
-      Reference Email: 
-      <input type="text" placeholder="optional">
-      <button type="button" id="remove_email">X</button>
+      Name:
+      <input formControlName="name" placeholder="Your name" />
     </label>
   </div>
-  <button type="button">Add Another Reference</button>
-	<button id="apply_button">Apply</button>
+  <div>
+    <label>
+      Email:
+      <input formControlName="email" placeholder="Your email" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Message:
+      <input formControlName="message" placeholder="Your message" />
+    </label>
+  </div>
+  <div formGroupName="address">
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        type="text"
+        class="form-control"
+        name="city"
+        formControlName="city"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input
+        type="text"
+        class="form-control"
+        name="street"
+        formControlName="street"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="pincode">Pin Code</label>
+      <input
+        type="text"
+        class="form-control"
+        name="pincode"
+        formControlName="pincode"
+      />
+    </div>
+  </div>
+  <button type="submit">Send</button>
+</form>
+
+<hr />
+<h1>Second Form</h1>
+<form [formGroup]="mySecondForm" (ngSubmit)="onSubmit(mySecondForm)">
+  <div>
+    <label>
+      Name:
+      <input formControlName="name" placeholder="Your name" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input formControlName="email" placeholder="Your email" />
+    </label>
+  </div>
+  <div>
+    <label>
+      Message:
+      <input formControlName="message" placeholder="Your message" />
+    </label>
+  </div>
+  <button type="submit">Send</button>
 </form>
